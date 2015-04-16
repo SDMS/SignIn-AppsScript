@@ -33,6 +33,12 @@ properties = {
 };
 }
 
+function include(filename){
+  return HtmlService.createHtmlOutputFromFile(filename)
+    .setSandboxMode(HtmlService.SandboxMode.IFRAME)
+    .getContent();
+}
+
 function generateSlides() {
   
   setProperties();
@@ -54,8 +60,14 @@ function generateSlides() {
         html +="</select>\n";
         break;   
     }
+    
+    if(s.lastSlide){
+      html+= "<div class='goButton' onclick='submit()'>Go!</div>";
+    }
+
     html += "</div>\n";
     slides.push(html);
   }
   Logger.log(slides);
+  return slides;
 }

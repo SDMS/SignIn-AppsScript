@@ -1,8 +1,46 @@
+<style>
+#ribbon {
+	height: 10vmin;
+	width: 100%;
+
+}
+.mode {
+	position: relative;
+	width: 18%;
+	height: 9vmin;
+	float: left;
+
+	border: 1px solid black;
+}
+
+.slides {
+	width: 62%;
+	float:right;
+}
+
+#page-mode.signin .slides.signin, #page-mode.signout .slides.signout{
+	display:block;
+	border: 2px solid red;
+}
+#page-mode.signin .slides.signout, #page-mode.signout .slides.signin{
+	display:none;
+}
+
+</style>
+
+<script>
+function switchMode(mode) {
+	document.getElementById('page-mode').className=mode;
+	console.log('switching to ' + mode);
+}
+
+</script>
+
 <div id='ribbon'>
-  <div id='mode-in' class='active'>Sign In</div>
-  <div id='mode-out' class='inactive'>Sign Out</div>
-  <div id='slides-in' class='active'>
+  <div class='mode signin' onclick="switchMode('signin')">Sign In</div>
+  <div class='mode signout' onclick="switchMode('signout')">Sign Out</div>
+  <div id='slides-in' class='slides signin'>
   </div>
-  <div id='slides-out' class='inactive'>
+  <div id='slides-out' class='slides signout'>
   </div>
 </div>
