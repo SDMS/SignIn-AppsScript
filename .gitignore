@@ -1,0 +1,5 @@
+# for using node-google-apps-script
+.manifest.json
+
+# test file name convention
+*_test.html
