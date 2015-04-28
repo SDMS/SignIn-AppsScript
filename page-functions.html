@@ -1,0 +1,36 @@
+<script>
+/*function insertFunctions(functs) {
+  document.getElementById('functions').innerHTML += functs[0] + functs[1];
+   removeStudent = functs[2];
+   console.log(functs + "!!");
+}
+
+google.script.run.withSuccessHandler(insertFunctions).generateFunctions();*/
+
+function submit() {
+  alert('submitted!\n' + document.getElementById('page-mode').className);
+  var sid = document.getElementById('textBox-slide-0').value;
+
+  google.script.run.withSuccessHandler(displayStudent).getStudent(sid);
+
+  /*
+  needs to be generated.
+  only in sign in or sign out slides:
+  iterate through all information
+  validate data
+  
+  if valid: put into an array
+  dump array to spreadsheet
+  display on page.
+  else: alert user
+  
+  reset slides.
+  */
+}
+
+function displayStudent(student) {
+    document.getElementById('student').innerHTML = student;
+    document.getElementById('map')
+}
+
+</script>

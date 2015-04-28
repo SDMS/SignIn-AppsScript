@@ -1,0 +1,19 @@
+<script>
+function insertSlides(slides){
+  document.getElementById('slides-in').innerHTML = slides[0];
+  document.getElementById('slides-out').innerHTML = slides[1];
+}
+google.script.run.withSuccessHandler(insertSlides).generateSlides();
+
+
+function setFields(f) {
+  fields = f;
+}
+google.script.run.withSuccessHandler(setFields).generateSubmit();
+
+function insertMap(map){
+
+// dont forget to fill with active members
+}
+
+</script>

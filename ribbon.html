@@ -26,13 +26,22 @@
 	display:none;
 }
 
+#student {
+  float: left;
+}
+
 </style>
 
 <script>
-function switchMode(mode) {
-	document.getElementById('page-mode').className=mode;
-	console.log('switching to ' + mode);
-}
+/*function switchSlide(current, next) {
+  var mode = document.getElementById('page-mode').className;
+  
+  var hideSlide = document.getElementById(current);
+  hideSlide.className = hideSlide.className.slice(0, -7);
+  
+  var showSlide = document.getElementById(next);
+  showSlide.className += ' active';
+}*/
 
 </script>
 
@@ -43,4 +52,5 @@ function switchMode(mode) {
   </div>
   <div id='slides-out' class='slides signout'>
   </div>
+  <div id='student'></div>
 </div>

@@ -1,4 +1,37 @@
+<script>
+
+var fields;
+var selectedSeat = -1; // this is only used in sign out if name list format is used.
+
+function switchMode(mode) {
+	document.getElementById('page-mode').className=mode;
+	console.log('switching to ' + mode);
+}
+
+function submit() {
+    var mode = document.getElementById('page-mode').className;
+    var message = [mode];
+    for(var i in fields[mode]){
+        if(fields[mode][i] == 'chooseSeat'){
+            message.push(selectedSeat);
+            //throw err if -1: please choose a seat.
+        } else{
+            message.push(document.getElementById(fields[mode][i]).value);
+            // throw err if null
+        }
+    }
+    //send to server.
+    google.script.run.withSuccessHandler(handleSubmitResult).doSubmit(message);
+}
+
+function handleSubmitResult(message) {
+    alert(message);
+    //if successful: display or remove student.
+    //reset slides
+}
+
+// Display and Remove Student functions
+
+</script>
+
 <div id='page-mode' class='signin'>
-	<?!= include('ribbon'); ?>
-	<?!= include('map'); ?>
-</div>
