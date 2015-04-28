@@ -1,12 +1,14 @@
 var studentSpreadsheet = SpreadsheetApp.openById("1c5Tvi0hvSbrYQhZGgQN9nJAsdQZtM7R-dnVS4gVuuTM");
 
+function include(file){
+  return HtmlService.createTemplateFromFile(file)
+      .evaluate()
+      .setSandboxMode(HtmlService.SandboxMode.IFRAME)
+      .getContent();
+}
+
 function doGet() {
-  var output = HtmlService.createHtmlOutputFromFile('index');
-  output.append(HtmlService.createHtmlOutputFromFile('ribbon').getContent());
-  output.append(HtmlService.createHtmlOutputFromFile('map').getContent());
-  output.append(HtmlService.createHtmlOutputFromFile('generator-handler').getContent());
-  output.append('</div>');
-  return output;
+  return HtmlService.createTemplateFromFile('index').evaluate();
 }
 
 function doSubmit(message) {

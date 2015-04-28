@@ -1,6 +1,6 @@
 var properties;
 function setProperties(){
-properties = maclab;
+  properties = whsmc;
 }
 
 function generateFunctions() {
@@ -10,31 +10,6 @@ function generateFunctions() {
   functs.push(generateRemoveStudent());
   Logger.log(functs);
   return functs;
-}
-
-function generateSubmit() {
-  var fields = {
-    'signin':[],
-    'signout':[]
-  };
-  var slideInfo = properties['slideInfo'];
-  for(var i in slideInfo){
-    switch(slideInfo[i].type){
-      case 'textBox':
-        fields.push('textBox-slide-' + i);
-        break;
-      case 'dropDown':
-        fields.push('dropDown-slide-' + i);
-        break;
-      case 'chooseSeat':
-        fields.push('chooseSeat');
-        break;
-      default:
-        break;
-    }
-  }
-  // push all id's of fields
-  return fields;
 }
 
 function generateDisplayStudent(){
@@ -57,10 +32,10 @@ function generateSlides() {
 
     switch(s.type){
       case 'textBox':
-        html += "\n<input id='textBox-slide-" + (i) + "' type='text' />";
+        html += "\n<input class='field " + (s.mode) + "' type='text' />";
         break;
       case 'dropDown':
-        html += "\n<select name='dropDown-slide-" + (i) + "'>\n";
+        html += "\n<select class='field " + (s.mode) + "'>\n";
         for(var o in s.options){
           html +="  <option value='" + s.options[o] + "'>" + s.options[o] + "</option>\n";
         }

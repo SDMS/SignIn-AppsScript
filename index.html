@@ -1,6 +1,5 @@
 <script>
 
-var fields;
 var selectedSeat = -1; // this is only used in sign out if name list format is used.
 
 function switchMode(mode) {
@@ -8,20 +7,21 @@ function switchMode(mode) {
 	console.log('switching to ' + mode);
 }
 
-function submit() {
+function getInfo(){
     var mode = document.getElementById('page-mode').className;
     var message = [mode];
-    for(var i in fields[mode]){
-        if(fields[mode][i] == 'chooseSeat'){
-            message.push(selectedSeat);
-            //throw err if -1: please choose a seat.
-        } else{
-            message.push(document.getElementById(fields[mode][i]).value);
-            // throw err if null
-        }
+    var fields = document.getElementsByClassName('field ' + mode);
+    
+    for(var i = 0; i < fields.length; i++){
+      message.push(fields.item(i).value);
     }
+    console.log(message);
+    return message;
+}
+
+function submit() {    
     //send to server.
-    google.script.run.withSuccessHandler(handleSubmitResult).doSubmit(message);
+    google.script.run.withSuccessHandler(handleSubmitResult).doSubmit(getInfo());
 }
 
 function handleSubmitResult(message) {
@@ -35,3 +35,8 @@ function handleSubmitResult(message) {
 </script>
 
 <div id='page-mode' class='signin'>
+
+<?!= include('ribbon'); ?>
+<?!= include('map'); ?>
+</div>
+<?!= HtmlService.createHtmlOutputFromFile('generator-handler').getContent(); ?>
