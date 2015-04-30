@@ -32,10 +32,10 @@ function generateSlides() {
 
     switch(s.type){
       case 'textBox':
-        html += "\n<input class='field " + (s.mode) + "' type='text' />";
+        html += "\n<input class='field " + (s.mode) + "' id='" + (s.id) + "' type='text' />";
         break;
       case 'dropDown':
-        html += "\n<select class='field " + (s.mode) + "'>\n";
+        html += "\n<select class='field " + (s.mode) + "' id='" + (s.id) + "'>\n";
         for(var o in s.options){
           html +="  <option value='" + s.options[o] + "'>" + s.options[o] + "</option>\n";
         }

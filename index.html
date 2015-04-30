@@ -9,13 +9,16 @@ function switchMode(mode) {
 
 function getInfo(){
     var mode = document.getElementById('page-mode').className;
-    var message = [mode];
+    var message = {
+                    'mode': mode, 
+                    'seat': selectedSeat
+                    };
     var fields = document.getElementsByClassName('field ' + mode);
     
     for(var i = 0; i < fields.length; i++){
-      message.push(fields.item(i).value);
+      message[fields.item(i).id] = fields.item(i).value;
     }
-    console.log(message);
+    console.log(JSON.stringify(message));
     return message;
 }
 
